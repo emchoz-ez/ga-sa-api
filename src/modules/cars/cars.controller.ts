@@ -2,7 +2,7 @@ import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, Use
 import { AuthGuard } from '@nestjs/passport';
 import { CarsService } from './cars.service';
 import { Car as CarEntity } from './car.entity';
-import { CarDto } from './dto/Car.dto';
+import { CarDto } from './dto/car.dto';
 
 @Controller('cars')
 export class CarsController {

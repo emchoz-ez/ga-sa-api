@@ -1,33 +1,32 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Car } from './car.entity';
 import { CarDto } from './dto/car.dto';
-import { User } from '../users/user.entity';
 import { CAR_REPOSITORY } from '../../core/constants';
 
 @Injectable()
 export class CarsService {
-    constructor(@Inject(CAR_REPOSITORY) private readonly CarRepository: typeof Car) { }
+    constructor(@Inject(CAR_REPOSITORY) private readonly carRepository: typeof Car) { }
 
-    async create(car: CarDto): Promise<Car> {
-        return await this.CarRepository.create<Car>();
+    async create(car): Promise<Car> {
+        return await this.carRepository.create<Car>(car);
     }
 
     async findAll(): Promise<Car[]> {
-        return await this.CarRepository.findAll<Car>();
+        return await this.carRepository.findAll<Car>();
     }
 
     async findOne(id): Promise<Car> {
-        return await this.CarRepository.findOne({
-        	where: { id },
-    	});
+        return await this.carRepository.findOne({
+            where: { id },
+        });
     }
 
     async delete(id) {
-        return await this.CarRepository.destroy({ where: { id } });
+        return await this.carRepository.destroy({ where: { id } });
     }
 
     async update(id, data) {
-        const [numberOfAffectedRows, [updatedCar]] = await this.CarRepository.update({ ...data }, { where: { id }, returning: true });
+        const [numberOfAffectedRows, [updatedCar]] = await this.carRepository.update({ ...data }, { where: { id }, returning: true });
 
         return { numberOfAffectedRows, updatedCar };
     }
