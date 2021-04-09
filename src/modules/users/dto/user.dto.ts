@@ -14,13 +14,12 @@ export class UserDto {
     @IsString()
     readonly lastName: string;
 
-    @IsNumber()
+    @IsString()
     readonly phone: string;
 
-    @IsNumber()
+    @IsString()
     readonly address: string;
 
-    @IsEmpty()
     @IsEmail()
     readonly email: string;
 
