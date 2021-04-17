@@ -1,6 +1,6 @@
 import { Column, DataType, Model } from 'sequelize-typescript';
 
-export class BaseEntity extends Model<BaseEntity> {
+export class CodebookBaseEntity extends Model<CodebookBaseEntity> {
   @Column({
     type: DataType.STRING,
     allowNull: false,
@@ -9,19 +9,19 @@ export class BaseEntity extends Model<BaseEntity> {
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
+    allowNull: true,
   })
   code: string;
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
+    allowNull: true,
   })
   other: string;
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
+    allowNull: true,
   })
   notes: string;
 }

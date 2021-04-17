@@ -8,6 +8,7 @@ import { AuthController } from './modules/auth/auth.controller';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { CarsModule } from './modules/cars/cars.module';
+import { CarTypeModule } from './modules/codebooks/car-type/car-type.module';
 
 @Module({
   imports: [DatabaseModule,
@@ -16,6 +17,7 @@ import { CarsModule } from './modules/cars/cars.module';
     UsersModule,
     AuthModule,
     CarsModule,
+    CarTypeModule
   ],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService],
