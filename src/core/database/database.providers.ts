@@ -10,6 +10,8 @@ export const databaseProviders = [{
     provide: SEQUELIZE,
     useFactory: async () => {
         let config;
+        const parsedConfig = parseDatabaseUrl(databaseConfig.production.uri);
+        console.log(parsedConfig, 'KATOLICI');
         switch (process.env.NODE_ENV) {
         case DEVELOPMENT:
            config = databaseConfig.development;
@@ -18,7 +20,7 @@ export const databaseProviders = [{
            config = databaseConfig.test;
            break;
         case PRODUCTION:
-           config = parseDatabaseUrl(databaseConfig.production.uri);
+           config = parsedConfig;
            break;
         default:
            config = databaseConfig.development;
