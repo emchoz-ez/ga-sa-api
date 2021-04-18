@@ -4,6 +4,7 @@ interface ParsedDatabaseOptions {
     username: string | undefined
     password: string | undefined
     database: string | undefined
+    dialect: string | undefined
 }
 
 /**
@@ -27,7 +28,8 @@ const parseDatabaseUrl = (
             username: undefined,
             host: undefined,
             password: undefined,
-            database: undefined
+            database: undefined,
+            dialect: 'postgres'
         }
 
     const regex: RegExp = /^(?:([^:\/?#\s]+):\/{2})?(?:([^@\/?#\s]+)@)?([^\/?#\s]+)?(?:\/([^?#\s]*))?(?:[?]([^#\s]+))?\S*$/
@@ -40,7 +42,8 @@ const parseDatabaseUrl = (
             username: undefined,
             host: undefined,
             password: undefined,
-            database: undefined
+            database: undefined,
+            dialect: 'postgres'
         }
 
     return {
@@ -53,7 +56,8 @@ const parseDatabaseUrl = (
                 : undefined,
         database:
             matches[4] != undefined ? matches[4].split('/')[0] : undefined,
-        password: matches[2] != undefined ? matches[2].split(':')[1] : undefined
+        password: matches[2] != undefined ? matches[2].split(':')[1] : undefined,
+        dialect: 'postgres'
     }
 }
 
