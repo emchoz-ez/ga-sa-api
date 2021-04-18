@@ -28,6 +28,6 @@ export const databaseConfig: IDatabaseConfig = {
         uri: 'postgres://jnfugvydonfqai:b15775dbcc5fe1a9001de426f1a2c5913e22aa5388d00ea91a5ed3a2db63a744@ec2-67-202-63-147.compute-1.amazonaws.com:5432/d44hvf10bnro8s',
         dialect:  'postgres',
         protocol: 'postgres',
-        logging:  true
+        logging:  true,
     },
 };
