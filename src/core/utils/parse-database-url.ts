@@ -9,6 +9,8 @@ interface ParsedDatabaseOptions {
   extra?: any;
   connectionString: string | undefined;
   dialectOptions?: any;
+  url?: any;
+  uri?: any;
 }
 
 /**
@@ -73,6 +75,8 @@ const parseDatabaseUrl = (
     password: matches[2] != undefined ? matches[2].split(':')[1] : undefined,
     dialect: 'postgres',
     connectionString: databaseUrl,
+    uri: databaseUrl, 
+    url: databaseUrl,
     dialectOptions: {
       ssl: {
         require: true,

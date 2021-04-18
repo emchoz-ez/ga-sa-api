@@ -6,6 +6,7 @@ import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 import parseDatabaseUrl from '../utils/parse-database-url';
 import sequelize from 'sequelize';
+import { parse } from 'dotenv/types';
 
 export const databaseProviders = [
   {
@@ -28,16 +29,12 @@ export const databaseProviders = [
         default:
           config = databaseConfig.development;
       }
-      const sequelize = new Sequelize(config);
+      // const sequelize = new Sequelize(config);
       // console.log(config, 'CONFIG ***************');
-      // let sequelize;
-      // process.env.NODE_ENV === 'PRODUCTION'
-      //   ? (sequelize = new Sequelize(config.connectionString, {
-      //       dialect: 'postgres',
-      //       protocol: 'postgres',
-            
-      //     }))
-      //   : (sequelize = new Sequelize(config));
+      let sequelize;
+      process.env.NODE_ENV === 'PRODUCTION'
+        ? (sequelize = new Sequelize(config.connectionString, config)
+        : (sequelize = new Sequelize(config));
 
       sequelize.addModels([User, Car, CarType]);
       await sequelize.sync();
