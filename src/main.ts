@@ -8,6 +8,9 @@ async function bootstrap() {
   app.setGlobalPrefix('api/v1')
   app.useGlobalPipes(new ValidateInputPipe());
 
+  const pg = require('pg');
+pg.defaults.ssl = true; 
+
   const config = new DocumentBuilder()
     .setTitle('GA Docs')
     .setDescription('The GA API documentation')
