@@ -11,6 +11,7 @@ export const databaseProviders = [{
     useFactory: async () => {
         let config;
         const parsedConfig = parseDatabaseUrl(databaseConfig.production.uri);
+        parsedConfig.ssl = true;
         console.log(parsedConfig, 'KATOLICI');
         switch (process.env.NODE_ENV) {
         case DEVELOPMENT:

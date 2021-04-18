@@ -5,6 +5,7 @@ interface ParsedDatabaseOptions {
     password: string | undefined
     database: string | undefined
     dialect: string | undefined
+    ssl?: boolean | undefined
 }
 
 /**
