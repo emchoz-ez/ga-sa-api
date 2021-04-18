@@ -34,6 +34,7 @@ export const databaseProviders = [
             port: 5432,
             host: config.host,
             logging: true,
+            ssl: config.ssl,
           }))
         : (sequelize = new Sequelize(config));
       sequelize.addModels([User, Car, CarType]);
