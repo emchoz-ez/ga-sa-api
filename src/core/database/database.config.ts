@@ -21,12 +21,10 @@ export const databaseConfig: IDatabaseConfig = {
         dialect: process.env.DB_DIALECT,
     },
     production: {
-        username: 'jnfugvydonfqai',
-        password: 'b15775dbcc5fe1a9001de426f1a2c5913e22aa5388d00ea91a5ed3a2db63a744',
-        database: 'd44hvf10bnro8sD',
-        host: 'ec2-67-202-63-147.compute-1.amazonaws.com',
+        username: process.env.DB_USER_PROD,
+        password: process.env.DB_PASS_PROD,
+        use_env_variable: process.env.DB_NAME_PRODUCTION_PROD,
+        host: process.env.DB_HOST_PROD,
         dialect: 'postgres',
-        ssl: true,
-        uri: 'postgres://jnfugvydonfqai:b15775dbcc5fe1a9001de426f1a2c5913e22aa5388d00ea91a5ed3a2db63a744@ec2-67-202-63-147.compute-1.amazonaws.com:5432/d44hvf10bnro8s'
     },
 };
