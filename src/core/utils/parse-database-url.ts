@@ -34,7 +34,7 @@ const parseDatabaseUrl = (
       dialect: 'postgres',
       ssl: true,
       dialectOptions: {
-        ssl: true,
+        rejectUnauthorized: false 
       },
     };
 
@@ -52,7 +52,7 @@ const parseDatabaseUrl = (
       dialect: 'postgres',
       ssl: true,
       dialectOptions: {
-        ssl: true,
+        rejectUnauthorized: false 
       },
     };
 
@@ -66,7 +66,7 @@ const parseDatabaseUrl = (
     dialect: 'postgres',
     ssl: true,
     dialectOptions: {
-      ssl: true,
+        rejectUnauthorized: false 
     },
   };
 };
