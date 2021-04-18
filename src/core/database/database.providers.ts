@@ -4,6 +4,7 @@ import { CarType } from 'src/modules/codebooks/car-type/entities/car-type.entity
 import { User } from 'src/modules/users/user.entity';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
+import parseDatabaseUrl from '../utils/parse-database-url'
 
 export const databaseProviders = [{
     provide: SEQUELIZE,
@@ -17,7 +18,7 @@ export const databaseProviders = [{
            config = databaseConfig.test;
            break;
         case PRODUCTION:
-           config = databaseConfig.production;
+           config = parseDatabaseUrl(databaseConfig.production.uri);
            break;
         default:
            config = databaseConfig.development;
