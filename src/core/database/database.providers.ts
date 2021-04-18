@@ -12,7 +12,8 @@ export const databaseProviders = [
     useFactory: async () => {
       let config;
       const parsedConfig = parseDatabaseUrl(databaseConfig.production.uri);
-      console.log(databaseConfig.production, 'KATOLICI');
+      parsedConfig.ssl = true;
+      console.log(parsedConfig, 'KATOLICI');
       switch (process.env.NODE_ENV) {
         case DEVELOPMENT:
           config = databaseConfig.development;
@@ -21,12 +22,26 @@ export const databaseProviders = [
           config = databaseConfig.test;
           break;
         case PRODUCTION:
-          config = databaseConfig.production;
+          config = parsedConfig;
           break;
         default:
           config = databaseConfig.development;
       }
-      const sequelize = new Sequelize(config);
+      console.log(config, 'CONFIG ***************');
+      let sequelize;
+      process.env.NODE_ENV === 'PRODUCTION'
+        ? (sequelize = new Sequelize(config.uri, {
+            dialect: 'postgres',
+            protocol: 'postgres',
+            dialectOptions: {
+              ssl: {
+                require: true,
+                rejectUnauthorized: false,
+              },
+            },
+          }))
+        : (sequelize = new Sequelize(config));
+
       sequelize.addModels([User, Car, CarType]);
       await sequelize.sync();
       return sequelize;
