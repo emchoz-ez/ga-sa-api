@@ -5,7 +5,7 @@ interface ParsedDatabaseOptions {
     password: string | undefined
     database: string | undefined
     dialect: string | undefined
-    SSL?: boolean | undefined
+    ssl?: any
 }
 
 /**
@@ -31,7 +31,9 @@ const parseDatabaseUrl = (
             password: undefined,
             database: undefined,
             dialect: 'postgres',
-            SSL: true,
+            ssl: {
+                rejectUnauthorized: false
+            },
         }
 
     const regex: RegExp = /^(?:([^:\/?#\s]+):\/{2})?(?:([^@\/?#\s]+)@)?([^\/?#\s]+)?(?:\/([^?#\s]*))?(?:[?]([^#\s]+))?\S*$/
@@ -46,7 +48,9 @@ const parseDatabaseUrl = (
             password: undefined,
             database: undefined,
             dialect: 'postgres',
-            SSL: true,
+            ssl: {
+                rejectUnauthorized: false
+            },
         }
 
     return {
@@ -61,7 +65,9 @@ const parseDatabaseUrl = (
             matches[4] != undefined ? matches[4].split('/')[0] : undefined,
         password: matches[2] != undefined ? matches[2].split(':')[1] : undefined,
         dialect: 'postgres',
-        SSL: true,
+        ssl: {
+                rejectUnauthorized: false
+            },
     }
 }
 
