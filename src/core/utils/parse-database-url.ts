@@ -30,7 +30,8 @@ const parseDatabaseUrl = (
             host: undefined,
             password: undefined,
             database: undefined,
-            dialect: 'postgres'
+            dialect: 'postgres',
+            ssl: true,
         }
 
     const regex: RegExp = /^(?:([^:\/?#\s]+):\/{2})?(?:([^@\/?#\s]+)@)?([^\/?#\s]+)?(?:\/([^?#\s]*))?(?:[?]([^#\s]+))?\S*$/
@@ -44,7 +45,8 @@ const parseDatabaseUrl = (
             host: undefined,
             password: undefined,
             database: undefined,
-            dialect: 'postgres'
+            dialect: 'postgres',
+            ssl: true,
         }
 
     return {
@@ -58,7 +60,8 @@ const parseDatabaseUrl = (
         database:
             matches[4] != undefined ? matches[4].split('/')[0] : undefined,
         password: matches[2] != undefined ? matches[2].split(':')[1] : undefined,
-        dialect: 'postgres'
+        dialect: 'postgres',
+        ssl: true,
     }
 }
 

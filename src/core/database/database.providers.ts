@@ -11,7 +11,6 @@ export const databaseProviders = [{
     useFactory: async () => {
         let config;
         const parsedConfig = parseDatabaseUrl(databaseConfig.production.uri);
-        parsedConfig.ssl = true;
         console.log(parsedConfig, 'KATOLICI');
         switch (process.env.NODE_ENV) {
         case DEVELOPMENT:
@@ -26,7 +25,6 @@ export const databaseProviders = [{
         default:
            config = databaseConfig.development;
         }
-        console.log(config, 'CONFIG ***************')
         const sequelize = new Sequelize(config);
         sequelize.addModels([User, Car, CarType]);
         await sequelize.sync();
