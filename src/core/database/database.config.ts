@@ -26,5 +26,6 @@ export const databaseConfig: IDatabaseConfig = {
         database: process.env.DB_NAME_PRODUCTION_PROD,
         host: process.env.DB_HOST_PROD,
         dialect: 'postgres',
+        ssl: true
     },
 };
