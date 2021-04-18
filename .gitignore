@@ -35,3 +35,5 @@ lerna-debug.log*
 
 # ENVIRONMENTAL FILES
 .env.sample
+.env
+.env.local
