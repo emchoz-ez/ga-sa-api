@@ -10,6 +10,7 @@ export interface IDatabaseConfigAttributes {
     uri?: string;
     protocol?: string;
     logging?: boolean;
+    dialectOptions?: any;
 }
 
 export interface IDatabaseConfig {
