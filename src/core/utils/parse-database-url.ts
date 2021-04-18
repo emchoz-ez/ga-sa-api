@@ -8,6 +8,7 @@ interface ParsedDatabaseOptions {
   ssl?: any;
   extra?: any;
   connectionString: string | undefined;
+  dialectOptions?: any;
 }
 
 /**
@@ -34,8 +35,11 @@ const parseDatabaseUrl = (
       database: undefined,
       dialect: 'postgres',
       connectionString: databaseUrl,
-      ssl: {
-        rejectUnauthorized: false,
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
       },
     };
 
@@ -52,8 +56,11 @@ const parseDatabaseUrl = (
       database: undefined,
       dialect: 'postgres',
       connectionString: databaseUrl,
-      ssl: {
-        rejectUnauthorized: false,
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
       },
     };
 
@@ -66,8 +73,11 @@ const parseDatabaseUrl = (
     password: matches[2] != undefined ? matches[2].split(':')[1] : undefined,
     dialect: 'postgres',
     connectionString: databaseUrl,
-    ssl: {
-      rejectUnauthorized: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
     },
   };
 };

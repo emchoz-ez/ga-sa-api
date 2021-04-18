@@ -5,6 +5,7 @@ import { User } from 'src/modules/users/user.entity';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 import parseDatabaseUrl from '../utils/parse-database-url';
+import sequelize from 'sequelize';
 
 export const databaseProviders = [
   {
@@ -27,20 +28,16 @@ export const databaseProviders = [
         default:
           config = databaseConfig.development;
       }
-      console.log(config, 'CONFIG ***************');
-      let sequelize;
-      process.env.NODE_ENV === 'PRODUCTION'
-        ? (sequelize = new Sequelize(config.connectionString, {
-            dialect: 'postgres',
-            protocol: 'postgres',
-            dialectOptions: {
-              ssl: {
-                require: true,
-                rejectUnauthorized: false,
-              },
-            },
-          }))
-        : (sequelize = new Sequelize(config));
+      const sequelize = new Sequelize(config);
+      // console.log(config, 'CONFIG ***************');
+      // let sequelize;
+      // process.env.NODE_ENV === 'PRODUCTION'
+      //   ? (sequelize = new Sequelize(config.connectionString, {
+      //       dialect: 'postgres',
+      //       protocol: 'postgres',
+            
+      //     }))
+      //   : (sequelize = new Sequelize(config));
 
       sequelize.addModels([User, Car, CarType]);
       await sequelize.sync();
