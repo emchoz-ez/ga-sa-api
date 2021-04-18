@@ -7,6 +7,9 @@ export interface IDatabaseConfigAttributes {
     dialect?: string;
     urlDatabase?: string;
     use_env_variable?: string;
+    uri: string;
+    protocol: string;
+    logging: boolean;
 }
 
 export interface IDatabaseConfig {

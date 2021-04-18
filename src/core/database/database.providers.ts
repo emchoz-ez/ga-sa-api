@@ -22,6 +22,7 @@ export const databaseProviders = [{
         default:
            config = databaseConfig.development;
         }
+        console.log(config, 'CONFIG ***************')
         const sequelize = new Sequelize(config);
         sequelize.addModels([User, Car, CarType]);
         await sequelize.sync();
