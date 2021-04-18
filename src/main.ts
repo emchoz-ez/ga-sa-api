@@ -9,7 +9,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidateInputPipe());
 
   const pg = require('pg');
-pg.defaults.ssl = true; 
+  pg.defaults.ssl = true; 
 
   const config = new DocumentBuilder()
     .setTitle('GA Docs')
