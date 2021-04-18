@@ -30,7 +30,7 @@ export const databaseProviders = [
       console.log(config, 'CONFIG ***************');
       let sequelize;
       process.env.NODE_ENV === 'PRODUCTION'
-        ? (sequelize = new Sequelize(config.uri, {
+        ? (sequelize = new Sequelize(config.connectionString, {
             dialect: 'postgres',
             protocol: 'postgres',
             dialectOptions: {
